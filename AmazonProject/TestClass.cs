@@ -8,7 +8,7 @@ namespace AmazonProject
         [Test]
         public void Login_Test()
         {
-
+            DoAction.Login(driver);
         }
     }
 }

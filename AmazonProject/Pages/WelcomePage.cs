@@ -11,7 +11,7 @@ namespace AmazonProject
             PageFactory.InitElements(driver, this);
         }
 
-        [FindsBy(How = How.Id, Using = "nav-link-accountList"]
+        [FindsBy(How = How.Id, Using = "nav-link-accountList")]
         [CacheLookup]
         public IWebElement LoginButton;
     }

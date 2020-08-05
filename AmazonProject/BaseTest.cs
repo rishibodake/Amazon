@@ -14,7 +14,7 @@ namespace AmazonProject
             driver = fact.InitBrowser("chrome");
 
             driver.Manage().Window.Maximize();
-            driver.Url = "https://www.amazon.com";
+            driver.Url = "https://www.amazon.in";
 
         }
     }
