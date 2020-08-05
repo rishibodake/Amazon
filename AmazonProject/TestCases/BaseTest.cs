@@ -17,5 +17,11 @@ namespace AmazonProject
             driver.Url = "https://www.amazon.in";
 
         }
+
+        [OneTimeTearDown]
+        public void CloseUp()
+        {
+            driver.Quit();
+        }
     }
 }
