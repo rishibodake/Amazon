@@ -6,9 +6,15 @@ namespace AmazonProject
     public class TestClass : BaseTest
     {
         [Test]
-        public void Login_Test()
+        public void SignIn_Test()
         {
-            DoAction.Login(driver);
+            DoAction.SignIn(driver);
+        }
+
+        [Test]
+        public void SignOut_Test()
+        {
+            DoAction.SignOut(driver);
         }
     }
 }
