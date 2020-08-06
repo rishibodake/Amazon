@@ -19,6 +19,10 @@ namespace AmazonProject.Pages
         [CacheLookup]
         public IWebElement SearchBar;
 
+        [FindsBy(How = How.Id, Using = "nav-search-submit-text")]
+        [CacheLookup]
+        public IWebElement SearchButton;
+     
         [FindsBy(How = How.Id, Using = "nav-item-signout")]
         [CacheLookup]
         public IWebElement SignOut;

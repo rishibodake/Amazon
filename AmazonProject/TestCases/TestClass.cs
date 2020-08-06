@@ -1,10 +1,9 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using System;
 
 namespace AmazonProject
 {
     [TestFixture]
+    [Parallelizable]
     public class TestClass : BaseTest
     {
         [Test,Order(0)]
@@ -15,6 +14,11 @@ namespace AmazonProject
         }
 
       
+        [Test,Order(1)]
+        public void Search_Test()
+        {
+            DoValidAction.SerachProduct(driver);
+        }
 
         [Test,Order(2)]
         public void SignOut_Test()

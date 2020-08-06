@@ -10,7 +10,7 @@ namespace AmazonProject.Pages
             PageFactory.InitElements(driver, this);
         }
 
-        [FindsBy(How = How.XPath, Using = "//div[@data-cel-widget='search_result_1']")]
-        public IWebElement Product;
+        [FindsBy(How = How.Id, Using = "add-to-cart-button")]
+        public IWebElement AddToCart;
     }
 }

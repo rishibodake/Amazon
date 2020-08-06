@@ -3,6 +3,10 @@ using AmazonProject.Data;
 using AmazonProject.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace AmazonProject
@@ -25,6 +29,23 @@ namespace AmazonProject
 
             HomePage homePage = new HomePage(driver);
             string validate = homePage.SignInValidationText.Text;
+        }
+
+        public static void SerachProduct(IWebDriver driver)
+        {
+            HomePage homePage = new HomePage(driver); 
+            homePage.SearchBar.SendKeys("asus" + Keys.Enter);
+            Thread.Sleep(5000);
+            IList<IWebElement> items = driver.FindElements(By.XPath("//a[@class='a-link-normal a-text-normal']"));
+            Thread.Sleep(5000);
+            Console.WriteLine(items[1].Text);
+            items[1].Click();
+            string windwoe = driver.WindowHandles.Last();
+            Thread.Sleep(5000);
+            driver.SwitchTo().Window(windwoe);
+
+            SearchResultPage searchResultPage = new SearchResultPage(driver);
+            searchResultPage.AddToCart.Click();
         }
       
         public static void SignOut(IWebDriver driver)

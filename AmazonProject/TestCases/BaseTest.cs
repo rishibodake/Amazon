@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using System.Threading;
 
 namespace AmazonProject
 {
@@ -21,6 +22,7 @@ namespace AmazonProject
         [OneTimeTearDown]
         public void CloseUp()
         {
+            Thread.Sleep(10000);
             driver.Quit();
         }
     }
