@@ -10,7 +10,7 @@ namespace AmazonProject
         [Test,Order(0)]
         public void SignIn_Test()
         {
-            DoAction.SignIn(driver);           
+            DoValidAction.SignIn(driver);           
             Assert.AreEqual(Validation.DoValidation(driver,"signin validation"), "Hello, Rishi");
         }
 
@@ -19,7 +19,7 @@ namespace AmazonProject
         [Test,Order(2)]
         public void SignOut_Test()
         {
-           DoAction.SignOut(driver);
+           DoValidAction.SignOut(driver);
         }
 
        

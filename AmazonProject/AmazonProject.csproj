@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -58,19 +61,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ExcelDataAcces.cs" />
+    <Compile Include="Data\UsersData.cs" />
+    <Compile Include="DoAction\DoInvalidActions.cs" />
     <Compile Include="Pages\SearchResultPage.cs" />
     <Compile Include="TestCases\BaseTest.cs" />
-    <Compile Include="BrowserFactory.cs" />
-    <Compile Include="DoAction.cs" />
+    <Compile Include="Factory\BrowserFactory.cs" />
+    <Compile Include="DoAction\DoValidAction.cs" />
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestCases\NegativeTestScenarios.cs" />
     <Compile Include="TestCases\OrderTest.cs" />
     <Compile Include="TestCases\TestClass.cs" />
     <Compile Include="Pages\WelcomePage.cs" />
-    <Compile Include="Validation.cs" />
+    <Compile Include="Valitating\Validation.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\Credentials.xlsx" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

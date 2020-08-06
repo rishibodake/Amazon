@@ -1,15 +1,13 @@
 ﻿
+using AmazonProject.Data;
 using AmazonProject.Pages;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using System;
-using System.Collections.Generic;
 using System.Threading;
 
 namespace AmazonProject
 {
-    public static class DoAction
+    public static class DoValidAction
     {
         public static void SignIn(IWebDriver driver)
         {
@@ -18,10 +16,10 @@ namespace AmazonProject
             Thread.Sleep(1000);
 
             LoginPage loginPage = new LoginPage(driver);
-            loginPage.Email.SendKeys("rishibodake@hotmail.com");
+            loginPage.Email.SendKeys(ExcelDataAcces.AccessDataFromFile("Valid_Creds").Username);
             Thread.Sleep(1000);
             loginPage.Continue.Click();
-            loginPage.Password.SendKeys("jocky1234#");
+            loginPage.Password.SendKeys(ExcelDataAcces.AccessDataFromFile("Valid_Creds").Password);
             Thread.Sleep(1000);
             loginPage.LoginSubmit.Click();
 
