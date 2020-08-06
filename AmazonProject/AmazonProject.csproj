@@ -113,6 +113,12 @@
     <None Include="Data\Credentials.xlsx" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Reports\NegativeScenariosReport\dashboard.html" />
+    <Content Include="Reports\PositiveScenariosReport\dashboard.html" />
+    <Content Include="Reports\PositiveScenariosReport\index.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
