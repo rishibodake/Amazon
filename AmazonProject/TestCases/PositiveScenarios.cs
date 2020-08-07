@@ -1,14 +1,11 @@
-﻿using AmazonProject.Configurations;
-using AventStack.ExtentReports;
-using AventStack.ExtentReports.Reporter;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace AmazonProject
 {
     [TestFixture]
     [Parallelizable]
-    public class TestClass : BaseTest
+    public class PositiveScenarios : BaseTest
     {
         bool flag = false;           
         [Test,Order(0)]
@@ -42,6 +39,14 @@ namespace AmazonProject
                 flag = true;
             }
             Assert.IsTrue(flag);
-        }      
+        }     
+        
+        [OneTimeTearDown]
+        public void Close()
+        {
+            driver.Quit();
+            //SendReports.ByMail();
+        }
+      
     }
 }
