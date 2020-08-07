@@ -17,7 +17,7 @@ namespace AmazonProject
         public void ExtendStart()
         {
             report = new ExtentReports();
-            var htmlReporter = new ExtentHtmlReporter(Config.Positive_Reports);
+            var htmlReporter = new ExtentHtmlReporter(Config.Positive_Reports_Location);
             report.AttachReporter(htmlReporter);
         }
 

@@ -98,6 +98,7 @@
     <Compile Include="Data\ExcelDataAcces.cs" />
     <Compile Include="Data\UsersData.cs" />
     <Compile Include="DoAction\DoInvalidActions.cs" />
+    <Compile Include="ExceptionHandeling\CustomException.cs" />
     <Compile Include="Pages\AccountPage.cs" />
     <Compile Include="Pages\SearchResultPage.cs" />
     <Compile Include="Take.cs" />
@@ -108,7 +109,6 @@
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCases\NegativeTestScenarios.cs" />
-    <Compile Include="TestCases\OrderTest.cs" />
     <Compile Include="TestCases\TestClass.cs" />
     <Compile Include="Pages\WelcomePage.cs" />
     <Compile Include="Valitating\Validation.cs" />
@@ -127,8 +127,10 @@
     <Content Include="Reports\PositiveScenariosReport\dashboard.html" />
     <Content Include="Reports\PositiveScenariosReport\index.html" />
     <Content Include="ScreenShots\Invalid_MobileNumber_SignIn_Test.jpeg" />
+    <Content Include="ScreenShots\Invalid_Passord_SignIn_Test.jpeg" />
     <Content Include="ScreenShots\Search_Product_Test.jpeg" />
     <Content Include="ScreenShots\Valid_SignIn_Test.jpeg" />
+    <Content Include="ScreenShots\Valid_SignOut_Test.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

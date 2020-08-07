@@ -1,5 +1,6 @@
 ﻿
 using AmazonProject.Data;
+using AmazonProject.ExceptionHandeling;
 using AmazonProject.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
@@ -16,22 +17,28 @@ namespace AmazonProject
     {
         public static void SignIn(IWebDriver driver)
         {
-            WelcomePage welcomePage = new WelcomePage(driver);
-            welcomePage.LoginButton.Click();
-            Thread.Sleep(1000);
+            try
+            {
+                WelcomePage welcomePage = new WelcomePage(driver);
+                welcomePage.LoginButton.Click();
+                Thread.Sleep(1000);
 
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.Email.SendKeys(ExcelDataAcces.AccessDataFromFile("Valid_Creds").Username);
-            Thread.Sleep(1000);
-            loginPage.Continue.Click();
-            loginPage.Password.SendKeys(ExcelDataAcces.AccessDataFromFile("Valid_Creds").Password);
-            Thread.Sleep(1000);
-            loginPage.LoginSubmit.Click();
+                LoginPage loginPage = new LoginPage(driver);
+                loginPage.Email.SendKeys(ExcelDataAcces.AccessDataFromFile("Valid_Creds").Username);
+                Thread.Sleep(1000);
+                loginPage.Continue.Click();
+                loginPage.Password.SendKeys(ExcelDataAcces.AccessDataFromFile("Valid_Creds").Password);
+                Thread.Sleep(1000);
+                loginPage.LoginSubmit.Click();
 
-            HomePage homePage = new HomePage(driver);
-            string validate = homePage.SignInValidationText.Text;
-
-            Take.ScreenShots(driver, "Valid_SignIn_Test");
+                HomePage homePage = new HomePage(driver);
+                string validate = homePage.SignInValidationText.Text;                
+            }
+            catch
+            {
+                Take.ScreenShots(driver, "Failed_SignIn_Test");
+                throw new CustomException(CustomException.TypeOfException.NO_SUCH_ELEMENT_FOUND, "Check Network");
+            }
         }
 
         public static void Add_Address(IWebDriver driver)
@@ -49,38 +56,50 @@ namespace AmazonProject
 
         public static void SerachProduct(IWebDriver driver)
         {
-            HomePage homePage = new HomePage(driver); 
-            homePage.SearchBar.SendKeys("wireless charger" + Keys.Enter);
-            Thread.Sleep(5000);
-            IList<IWebElement> items = driver.FindElements(By.XPath("//a[@class='a-link-normal a-text-normal']"));
-            Thread.Sleep(5000);
-            Console.WriteLine(items[0].Text);
-            items[0].Click();
-            string windwoe = driver.WindowHandles.Last();
-            Thread.Sleep(5000);
-            driver.SwitchTo().Window(windwoe);
+            try
+            {
+                HomePage homePage = new HomePage(driver);
+                homePage.SearchBar.SendKeys("wireless charger" + Keys.Enter);
+                Thread.Sleep(5000);
+                IList<IWebElement> items = driver.FindElements(By.XPath("//a[@class='a-link-normal a-text-normal']"));
+                Thread.Sleep(5000);
+                Console.WriteLine(items[0].Text);
+                items[0].Click();
+                string windwoe = driver.WindowHandles.Last();
+                Thread.Sleep(5000);
+                driver.SwitchTo().Window(windwoe);
 
-            SearchResultPage searchResultPage = new SearchResultPage(driver);
-            searchResultPage.AddToCart.Click();
-            Thread.Sleep(2000);
-            searchResultPage.CartPage.Click();
-            Thread.Sleep(5000);
-
-            
-
-            Take.ScreenShots(driver, "Search_Product_Test");
+                SearchResultPage searchResultPage = new SearchResultPage(driver);
+                searchResultPage.AddToCart.Click();
+                Thread.Sleep(2000);
+                searchResultPage.CartPage.Click();
+                Thread.Sleep(5000);
+            }
+            catch
+            {
+                Take.ScreenShots(driver, "Failed_SearchProduct_Test");
+                throw new CustomException(CustomException.TypeOfException.NO_SUCH_ELEMENT_FOUND, "Check Network");
+            }                      
         }
       
         public static void SignOut(IWebDriver driver)
         {
-            HomePage homePage = new HomePage(driver);
-            Actions action = new Actions(driver); //Using Action Class To Hover On Account & List
+            try
+            {
+                HomePage homePage = new HomePage(driver);
+                Actions action = new Actions(driver); //Using Action Class To Hover On Account & List
 
-            action.MoveToElement(homePage.AccountList).Perform(); //Performing The Mouse Hover
-            Thread.Sleep(2000);
-            homePage.SignOut.Click();
+                action.MoveToElement(homePage.AccountList).Perform(); //Performing The Mouse Hover
+                Thread.Sleep(2000);
+                homePage.SignOut.Click();
 
-            Take.ScreenShots(driver, "Valid_SignOut_Test");
+                Take.ScreenShots(driver, "Valid_SignOut_Test");
+            }
+            catch
+            {
+                Take.ScreenShots(driver, "Failed_SignOut_Test");
+                throw new CustomException(CustomException.TypeOfException.NO_SUCH_ELEMENT_FOUND, "Check Network");
+            }
         }
     }
 }

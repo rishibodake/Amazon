@@ -17,7 +17,7 @@ namespace AmazonProject.TestCases
         public void ExtendStart()
         {
             report = new ExtentReports();
-            var htmlReporter = new ExtentHtmlReporter(Config.Negative_Reports);
+            var htmlReporter = new ExtentHtmlReporter(Config.Negative_Reports_Location);
             report.AttachReporter(htmlReporter);
         }
 
@@ -33,10 +33,11 @@ namespace AmazonProject.TestCases
             Take.ScreenShots(driver, "Invalid_MobileNumber_SignIn_Test");
         }
 
-/*        [Test]
+       [Test]
         public void Incorrect_Password_Test()
         {
             ExtentTest test = report.CreateTest("Incorrect_Password_Test").Info("Test For Incorrect Password");
+            
             DoInvalidActions.Incorrect_Password(driver);
             string check = driver.FindElement(By.ClassName("a-list-item")).Text;
             Assert.AreEqual(check, "Your password is incorrect");
@@ -44,7 +45,7 @@ namespace AmazonProject.TestCases
 
             Take.ScreenShots(driver, "Invalid_Passord_SignIn_Test");
         }
-*/
+
 
         [OneTimeTearDown]
         public void ExtentClose()
