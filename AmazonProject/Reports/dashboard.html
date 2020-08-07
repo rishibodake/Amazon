@@ -51,7 +51,7 @@
           </li>
             <li class="m-r-10">
                 <a href="#">
-                    <span class="badge badge-primary">07-08-2020 11:35:40</span>
+                    <span class="badge badge-primary">07-08-2020 23:05:02</span>
                 </a>
             </li>
         </ul>
@@ -103,11 +103,11 @@
 	                                        </div>
 	                                    </div>
 	                                    <div class="card-footer">
-	                                    	<div><small data-tooltip='100%'>
+	                                    	<div><small data-tooltip='60%'>
 	                                    		<b>3</b> tests passed
                                     		</small></div>
 	                                    	<div>
-	                                    		<small data-tooltip='0%'><b>0</b> tests failed, 
+	                                    		<small data-tooltip='40%'><b>2</b> tests failed, 
 	                                    		<b data-tooltip='0%'>0</b> others
 	                                    		</small>
                                     		</div>
@@ -122,10 +122,10 @@
 	                                        <div class="media justify-content-between">
 												<div>
 													<p class="">Tests</p>
-													<h2 class="font-size-28 font-weight-light">3</h2>
+													<h2 class="font-size-28 font-weight-light">5</h2>
 													<span class="text-semibold text-success font-size-15">
 													<i class="ti-arrow-up font-size-11"></i> 
-														<span>100%</span>
+														<span>60%</span>
 													</span>
 												</div>
 												<div class="align-self-end">
@@ -141,7 +141,7 @@
 	                                        <div class="media justify-content-between">
 												<div>
 													<p class="">Start</p>
-													<h6 class="font-weight-light">07-08-2020 11:35:40</h6>
+													<h6 class="font-weight-light">07-08-2020 23:05:02</h6>
 													<span class="text-semibold text-success font-size-15">
 												</div>
 												<div class="align-self-end">
@@ -157,7 +157,7 @@
 	                                        <div class="media justify-content-between">
 												<div>
 													<p class="">End</p>
-													<h6 class="font-weight-light">07-08-2020 11:36:33</h6>
+													<h6 class="font-weight-light">07-08-2020 23:06:52</h6>
 													<span class="text-semibold text-danger font-size-15">
 												</div>
 												<div class="align-self-end">
@@ -173,7 +173,7 @@
 	                                        <div class="media justify-content-between">
 												<div>
 													<p class="">Duration</p>
-													<h6 class="font-weight-light">00:00:58.6191260</h6>
+													<h6 class="font-weight-light">00:01:50.1818999</h6>
 													<span class="text-semibold font-size-15">
 												</div>
 												<div class="align-self-end">
@@ -199,7 +199,42 @@
 								</div>
 							</div>
 							<div class="row">
-																															</div>
+																																<div class="col-md-4">
+									<div class="card">
+										<div class="card-header">
+											<h6 class="card-title">Environment</h6>
+										</div>
+										<div class="table-overflow">
+											<table class="table table-sm">
+												<thead>
+													<tr class="bg-gray">
+														<th>Name</th>
+														<th>Value</th>
+													</tr>
+												</thead>
+												<tbody>
+														<tr>
+															<td>Oprating System</td>
+															<td>Windows 10</td>
+														</tr>
+														<tr>
+															<td>Host Name</td>
+															<td>LAPTOP-ID6MD5FD</td>
+														</tr>
+														<tr>
+															<td>Browser</td>
+															<td>Chrome</td>
+														</tr>
+														<tr>
+															<td>Environment</td>
+															<td>Pre_Prod</td>
+														</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -207,14 +242,14 @@
 		</div>
 		<script>
 			var statusGroup = {
-                parentCount: 3,
+                parentCount: 5,
 				passParent: 3,
-				failParent: 0,
+				failParent: 2,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
-				exceptionsParent: 0,
+				exceptionsParent: 2,
 				childCount: 0,
 				passChild: 0,
 				failChild: 0,
@@ -238,7 +273,7 @@
 			};
 		</script>
 			<script>
-				var timeline = { "SignIn_Test":16.4147593,"Search_Test":32.0118693,"SignOut_Test":4.5803921 };
+				var timeline = { "Incorrect_Email_Test":0.0029989,"SignIn_Test":0,"Incorrect_Password_Test":0,"Search_Test":2.4740339,"SignOut_Test":0.6301952 };
 			</script>
 		<script type='text/javascript'>
 	

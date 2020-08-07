@@ -20,9 +20,6 @@ namespace AmazonProject
 
         public static void Incorrect_Password(IWebDriver driver)
         {
-          //  HomePage hpage = new HomePage(driver);
-           // hpage.AccountList.Click();
-           // Thread.Sleep(2000);
             LoginPage page = new LoginPage(driver);
             page.Email.Clear();
             page.Email.SendKeys(ExcelDataAcces.AccessDataFromFile("Valid_Creds").Username);

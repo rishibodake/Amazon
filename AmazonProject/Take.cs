@@ -1,18 +1,20 @@
 ﻿
 using OpenQA.Selenium;
+using System;
 
 namespace AmazonProject
 {
     public static class Take
     {
-        public static Screenshot screenshot;
-        public const string FileAddress = @"C:\Users\abhib\source\repos\AmazonProject\AmazonProject\ScreenShots\";
-        public static void ScreenShots(IWebDriver driver, string test)
+        public static string ScreenShots(IWebDriver driver, string testStatus)
         {
-
-            screenshot = ((ITakesScreenshot)driver).GetScreenshot();
-            screenshot.SaveAsFile(FileAddress + test + ".jpeg", ScreenshotImageFormat.Jpeg);
-
+            ITakesScreenshot ts = (ITakesScreenshot)driver;
+            Screenshot screenshot = ts.GetScreenshot();
+            string path = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
+            string finalPath = path.Substring(0, path.LastIndexOf("bin")) + "Screenshots\\" + testStatus + ".Jpeg";
+            string returnPath = new Uri(finalPath).LocalPath;
+            screenshot.SaveAsFile(returnPath, ScreenshotImageFormat.Jpeg);
+            return returnPath;
         }
     }
 }

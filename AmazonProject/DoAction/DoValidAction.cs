@@ -36,7 +36,6 @@ namespace AmazonProject
             }
             catch
             {
-                Take.ScreenShots(driver, "Failed_SignIn_Test");
                 throw new CustomException(CustomException.TypeOfException.NO_SUCH_ELEMENT_FOUND, "Check Network");
             }
         }
@@ -76,8 +75,7 @@ namespace AmazonProject
                 Thread.Sleep(5000);
             }
             catch
-            {
-                Take.ScreenShots(driver, "Failed_SearchProduct_Test");
+            {               
                 throw new CustomException(CustomException.TypeOfException.NO_SUCH_ELEMENT_FOUND, "Check Network");
             }                      
         }
@@ -97,7 +95,6 @@ namespace AmazonProject
             }
             catch
             {
-                Take.ScreenShots(driver, "Failed_SignOut_Test");
                 throw new CustomException(CustomException.TypeOfException.NO_SUCH_ELEMENT_FOUND, "Check Network");
             }
         }
