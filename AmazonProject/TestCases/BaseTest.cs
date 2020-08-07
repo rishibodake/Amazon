@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using AmazonProject.Configurations;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System.Threading;
 
@@ -15,15 +16,15 @@ namespace AmazonProject
             driver = fact.InitBrowser("chrome");
 
             driver.Manage().Window.Maximize();
-            driver.Url = "https://www.amazon.in";
+            driver.Url = Config.URL;
 
         }
 
-        [OneTimeTearDown]
+   /*     [OneTimeTearDown]
         public void CloseUp()
         {
             Thread.Sleep(10000);
             driver.Quit();
-        }
+        }*/
     }
 }

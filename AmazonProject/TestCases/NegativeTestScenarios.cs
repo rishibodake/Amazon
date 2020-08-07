@@ -1,4 +1,5 @@
-﻿using AmazonProject.Pages;
+﻿using AmazonProject.Configurations;
+using AmazonProject.Pages;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using NUnit.Framework;
@@ -16,7 +17,7 @@ namespace AmazonProject.TestCases
         public void ExtendStart()
         {
             report = new ExtentReports();
-            var htmlReporter = new ExtentHtmlReporter(@"C:\Users\abhib\source\repos\AmazonProject\AmazonProject\Reports\NegativeScenariosReport\");
+            var htmlReporter = new ExtentHtmlReporter(Config.Negative_Reports);
             report.AttachReporter(htmlReporter);
         }
 
@@ -28,9 +29,11 @@ namespace AmazonProject.TestCases
             string check = driver.FindElement(By.ClassName("a-alert-heading")).Text;
             Assert.AreEqual(check, "Incorrect phone number");
             test.Log(Status.Pass, "Sign In Failed, Test Succesful");
+
+            Take.ScreenShots(driver, "Invalid_MobileNumber_SignIn_Test");
         }
 
-        [Test]
+/*        [Test]
         public void Incorrect_Password_Test()
         {
             ExtentTest test = report.CreateTest("Incorrect_Password_Test").Info("Test For Incorrect Password");
@@ -38,7 +41,10 @@ namespace AmazonProject.TestCases
             string check = driver.FindElement(By.ClassName("a-list-item")).Text;
             Assert.AreEqual(check, "Your password is incorrect");
             test.Log(Status.Pass, "Test Passed");
+
+            Take.ScreenShots(driver, "Invalid_Passord_SignIn_Test");
         }
+*/
 
         [OneTimeTearDown]
         public void ExtentClose()

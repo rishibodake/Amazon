@@ -6,6 +6,7 @@ namespace AmazonProject
 {
     public static class Validation
     {
+        
         public static string DoValidation(IWebDriver driver,string of)
         {
             HomePage homePage = new HomePage(driver);

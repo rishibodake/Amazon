@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 
 namespace AmazonProject
@@ -29,23 +30,45 @@ namespace AmazonProject
 
             HomePage homePage = new HomePage(driver);
             string validate = homePage.SignInValidationText.Text;
+
+            Take.ScreenShots(driver, "Valid_SignIn_Test");
+        }
+
+        public static void Add_Address(IWebDriver driver)
+        {
+            WelcomePage welcomePage = new WelcomePage(driver);
+            welcomePage.LoginButton.Click();
+
+            AccountPage accountPage = new AccountPage(driver);
+            accountPage.MyAddress.Click();
+            Thread.Sleep(3000);
+            accountPage.SetDefault.Click();
+            Thread.Sleep(2000);
+            accountPage.HomeButton.Click();                  
         }
 
         public static void SerachProduct(IWebDriver driver)
         {
             HomePage homePage = new HomePage(driver); 
-            homePage.SearchBar.SendKeys("asus" + Keys.Enter);
+            homePage.SearchBar.SendKeys("wireless charger" + Keys.Enter);
             Thread.Sleep(5000);
             IList<IWebElement> items = driver.FindElements(By.XPath("//a[@class='a-link-normal a-text-normal']"));
             Thread.Sleep(5000);
-            Console.WriteLine(items[1].Text);
-            items[1].Click();
+            Console.WriteLine(items[0].Text);
+            items[0].Click();
             string windwoe = driver.WindowHandles.Last();
             Thread.Sleep(5000);
             driver.SwitchTo().Window(windwoe);
 
             SearchResultPage searchResultPage = new SearchResultPage(driver);
             searchResultPage.AddToCart.Click();
+            Thread.Sleep(2000);
+            searchResultPage.CartPage.Click();
+            Thread.Sleep(5000);
+
+            
+
+            Take.ScreenShots(driver, "Search_Product_Test");
         }
       
         public static void SignOut(IWebDriver driver)
@@ -56,6 +79,8 @@ namespace AmazonProject
             action.MoveToElement(homePage.AccountList).Perform(); //Performing The Mouse Hover
             Thread.Sleep(2000);
             homePage.SignOut.Click();
+
+            Take.ScreenShots(driver, "Valid_SignOut_Test");
         }
     }
 }

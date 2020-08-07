@@ -1,6 +1,8 @@
-﻿using AventStack.ExtentReports;
+﻿using AmazonProject.Configurations;
+using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using NUnit.Framework;
+using OpenQA.Selenium;
 
 namespace AmazonProject
 {
@@ -8,14 +10,14 @@ namespace AmazonProject
     [Parallelizable]
     public class TestClass : BaseTest
     {
-
+        bool flag = false;
         ExtentReports report = null;
 
         [OneTimeSetUp]
         public void ExtendStart()
         {
             report = new ExtentReports();
-            var htmlReporter = new ExtentHtmlReporter(@"C:\Users\abhib\source\repos\AmazonProject\AmazonProject\Reports\PositiveScenariosReport\");
+            var htmlReporter = new ExtentHtmlReporter(Config.Positive_Reports);
             report.AttachReporter(htmlReporter);
         }
 
@@ -27,21 +29,34 @@ namespace AmazonProject
             Assert.AreEqual(Validation.DoValidation(driver,"signin validation"), "Hello, Rishi");
             test.Log(Status.Pass, "Sign In Succesful");
         }
-
-      
-        [Test,Order(1)]
+       
+        [Test,Order(2)]
         public void Search_Test()
         {
             ExtentTest test = report.CreateTest("Search_Test").Info("Test To Search The Product");
             DoValidAction.SerachProduct(driver);
+
+            string validresult = driver.FindElement(By.XPath("//span[text()[contains(.,'Wireless Charger')]]")).Text;
+            if(validresult.Contains("Wireless Charger"))
+            {
+                 flag = true;
+            }
+            Assert.IsTrue(flag);
             test.Log(Status.Pass, "Search Succesfull");
         }
 
-        [Test,Order(2)]
+        [Test,Order(3)]
         public void SignOut_Test()
         {
             ExtentTest test = report.CreateTest("SignOut_Test").Info("Test To Sign Out from Application");
             DoValidAction.SignOut(driver);
+
+            string validresult = driver.FindElement(By.XPath("//*[text()[contains(.,'Email')]]")).Text;
+            if (validresult.Contains("Email"))
+            {
+                flag = true;
+            }
+            Assert.IsTrue(flag);
             test.Log(Status.Pass, "Sign Out  Succesfull");
         }
 
