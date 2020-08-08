@@ -1,22 +1,20 @@
-﻿using AmazonProject.Configurations;
-using AmazonProject.Pages;
-using AventStack.ExtentReports;
-using AventStack.ExtentReports.Reporter;
+﻿
 using NUnit.Framework;
 using OpenQA.Selenium;
+using static AmazonProject.Validation;
 
 namespace AmazonProject.TestCases
 {
     [TestFixture]
     [Parallelizable]
     public class NegativeTestScenarios : BaseTest
-    {      
+    {
         [Test,Order(0)]
         public void Incorrect_Mobile_SignIn_Test()
         {       
             DoInvalidActions.Incorrect_Mobile(driver);
             string check = driver.FindElement(By.ClassName("a-alert-heading")).Text;
-            Assert.AreEqual(check, "Incorrect phone number");           
+            Assert.AreEqual(check,Expected_Incorrect_Mobile_SignIn_Test_Validation);           
         }
 
 
@@ -25,7 +23,7 @@ namespace AmazonProject.TestCases
         {
             DoInvalidActions.Incorrect_Email(driver);
             string check = driver.FindElement(By.ClassName("a-alert-heading")).Text;
-            Assert.AreEqual(check, "There was a problem");
+            Assert.AreEqual(check,Expected_Incorrect_Email_SignIn_Test_Validation);
         }
 
         [Test,Order(2)]
@@ -33,7 +31,7 @@ namespace AmazonProject.TestCases
         {         
             DoInvalidActions.Incorrect_Password(driver);
             string check = driver.FindElement(By.ClassName("a-list-item")).Text;
-            Assert.AreEqual(check, "Your password is incorrect");
+            Assert.AreEqual(check,Expected__Incorrect_Password_Test_Validation);
         }    
         
         [OneTimeTearDown]

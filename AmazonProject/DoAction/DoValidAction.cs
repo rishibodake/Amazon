@@ -64,9 +64,9 @@ namespace AmazonProject
                 Thread.Sleep(5000);
                 Console.WriteLine(items[0].Text);
                 items[0].Click();
-                string windwoe = driver.WindowHandles.Last();
+                string last_window = driver.WindowHandles.Last();
                 Thread.Sleep(5000);
-                driver.SwitchTo().Window(windwoe);
+                driver.SwitchTo().Window(last_window);
 
                 SearchResultPage searchResultPage = new SearchResultPage(driver);
                 searchResultPage.AddToCart.Click();

@@ -4,8 +4,6 @@ using AventStack.ExtentReports.MarkupUtils;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
-using System.Threading;
-
 namespace AmazonProject
 {
     public class BaseTest
@@ -16,13 +14,9 @@ namespace AmazonProject
         [OneTimeSetUp]
         public void Setup()
         {
-
             BrowserFactory fact = new BrowserFactory();
             driver = fact.InitBrowser("chrome");
-
-            driver.Manage().Window.Maximize();
             driver.Url = Config.URL;
-
         }
 
         [TearDown]
