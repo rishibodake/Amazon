@@ -1,5 +1,5 @@
 # Project Title
-FlipKart-Automation
+Amazon
 
 ## Description:
 This Project Will Test End To End Scenarios For The Amazon.in Applicatopn
